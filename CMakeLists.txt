@@ -170,8 +170,8 @@ endif()
 
 
 # MLIR
-find_package(MLIR REQUIRED CONFIG PATHS ${MLIR_DIR})
-
+# find_package(MLIR REQUIRED CONFIG PATHS ${MLIR_DIR})
+list(APPEND CMAKE_MODULE_PATH ${KUORY_MLIR_DIR}/cmake/modules)
 list(APPEND CMAKE_MODULE_PATH "${MLIR_CMAKE_DIR}")
 list(APPEND CMAKE_MODULE_PATH "${LLVM_CMAKE_DIR}")
 
@@ -180,10 +180,11 @@ include(AddLLVM)
 include(AddMLIR)
 
 # Disable warnings that show up in external code (gtest;pybind11)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wno-covered-switch-default")
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wno-covered-switch-default")
 
 include_directories(${MLIR_INCLUDE_DIRS})
 include_directories(${LLVM_INCLUDE_DIRS})
+include_directories(${LLVM_BINARY_DIR}/tools/mlir/include) # MLIR_GENERATED_INCLUDE_DIR
 include_directories(${PROJECT_SOURCE_DIR}/include)
 include_directories(${PROJECT_BINARY_DIR}/include) # Tablegen'd files
 # link_directories(${LLVM_LIBRARY_DIR})

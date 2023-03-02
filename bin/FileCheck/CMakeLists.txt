@@ -1,2 +1,2 @@
-add_llvm_executable(FileCheck FileCheck.cpp)
-target_link_libraries(FileCheck PRIVATE LLVMFileCheck LLVMSupport)
+add_llvm_executable(TritonFileCheck FileCheck.cpp)
+target_link_libraries(TritonFileCheck PRIVATE LLVMFileCheck LLVMSupport)
